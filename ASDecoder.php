@@ -23,7 +23,7 @@ class ASDecoder {
      * @param string $identityToken
      * @return object|null
      */
-    public static function getAppleSignInPayload(string $identityToken) : ?object
+    public static function getAppleSignInPayload($identityToken)
     {
         $identityPayload = self::decodeIdentityToken($identityToken);
         return new ASPayload($identityPayload);
@@ -35,7 +35,7 @@ class ASDecoder {
      * @param string $identityToken
      * @return object
      */
-    public static function decodeIdentityToken(string $identityToken) : object {
+    public static function decodeIdentityToken($identityToken) {
         $publicKeyData = self::fetchPublicKey();
 
         $publicKey = $publicKeyData['publicKey'];
@@ -52,7 +52,7 @@ class ASDecoder {
      *
      * @return array
      */
-    public static function fetchPublicKey() : array {
+    public static function fetchPublicKey() {
         $publicKeys = file_get_contents('https://appleid.apple.com/auth/keys');
         $decodedPublicKeys = json_decode($publicKeys, true);
 
@@ -82,7 +82,7 @@ class ASDecoder {
 class ASPayload {
     protected $_instance;
 
-    public function __construct(?object $instance) {
+    public function __construct($instance) {
         if(is_null($instance)) {
             throw new Exception('ASPayload received null instance.');
         }
@@ -101,15 +101,15 @@ class ASPayload {
         return $this->_instance->$key = $val;
     }
 
-    public function getEmail() : ?string {
+    public function getEmail() {
         return (isset($this->_instance->email)) ? $this->_instance->email : null;
     }
 
-    public function getUser() : ?string {
+    public function getUser() {
         return (isset($this->_instance->sub)) ? $this->_instance->sub : null;
     }
 
-    public function verifyUser(string $user) : bool {
+    public function verifyUser(string $user) {
         return $user === $this->getUser();
     }
 }
