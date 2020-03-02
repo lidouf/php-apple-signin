@@ -1,10 +1,15 @@
 {
     "name": "lidouf/php-apple-signin",
     "type": "library",
-    "description": "A simple library to decode and parse Apple Sign In client tokens.",
+    "description": "A simple library to decode and parse Apple Sign In client tokens. Based on Griffin Ledingham's php-apple-signin project.",
     "keywords": ["apple","sign","in","ios","php","jwt","jwk"],
     "license": "MIT",
     "authors": [
+        {
+            "name": "Griffin Ledingham",
+            "email": "gcledingham@gmail.com",
+            "role": "Developer"
+        },
         {
             "name": "lidouf",
             "email": "lidouf@gmail.com",

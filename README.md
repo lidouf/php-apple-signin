@@ -1,6 +1,13 @@
 php-apple-signin
 =======
+
 PHP library to manage Sign In with Apple identifier tokens, and validate them server side passed through by the iOS client.
+
+Based on Griffin Ledingham's php-apple-signin project. 3 major modifications on it:
+
+1. remove >=php7.2 mandatory requirements.
+2. compatible for multiple keys check(apple return 3 keys now).
+3. import absent exception files from firebase's JWT project.
 
 Installation
 ------------
